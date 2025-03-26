@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		801DEDD52D8DEB7C0065969B /* HorizontalFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 801DEDD42D8DEB7C0065969B /* HorizontalFlowLayout */; };
 		802910E72D8F555300D9445B /* HorizontalFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 802910E62D8F555300D9445B /* HorizontalFlowLayout */; };
+		806ED8422D938D2500C71D81 /* PreviewSnapshots in Frameworks */ = {isa = PBXBuildFile; productRef = 806ED8412D938D2500C71D81 /* PreviewSnapshots */; };
+		806ED8442D938D2500C71D81 /* PreviewSnapshotsTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 806ED8432D938D2500C71D81 /* PreviewSnapshotsTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806ED8422D938D2500C71D81 /* PreviewSnapshots in Frameworks */,
 				802910E72D8F555300D9445B /* HorizontalFlowLayout in Frameworks */,
 				801DEDD52D8DEB7C0065969B /* HorizontalFlowLayout in Frameworks */,
 			);
@@ -66,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806ED8442D938D2500C71D81 /* PreviewSnapshotsTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +125,7 @@
 			packageProductDependencies = (
 				801DEDD42D8DEB7C0065969B /* HorizontalFlowLayout */,
 				802910E62D8F555300D9445B /* HorizontalFlowLayout */,
+				806ED8412D938D2500C71D81 /* PreviewSnapshots */,
 			);
 			productName = Example;
 			productReference = 80EBB8662D8BBCFB00B56676 /* Example.app */;
@@ -144,6 +149,7 @@
 			);
 			name = ExampleTests;
 			packageProductDependencies = (
+				806ED8432D938D2500C71D81 /* PreviewSnapshotsTesting */,
 			);
 			productName = ExampleTests;
 			productReference = 80EBB8762D8BBCFC00B56676 /* ExampleTests.xctest */;
@@ -206,6 +212,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				802910E52D8F555300D9445B /* XCRemoteSwiftPackageReference "HorizontalFlowLayout" */,
+				806ED8402D938D2500C71D81 /* XCRemoteSwiftPackageReference "swiftui-preview-snapshots" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 80EBB8672D8BBCFB00B56676 /* Products */;
@@ -576,6 +583,14 @@
 				kind = branch;
 			};
 		};
+		806ED8402D938D2500C71D81 /* XCRemoteSwiftPackageReference "swiftui-preview-snapshots" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doordash-oss/swiftui-preview-snapshots.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -587,6 +602,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 802910E52D8F555300D9445B /* XCRemoteSwiftPackageReference "HorizontalFlowLayout" */;
 			productName = HorizontalFlowLayout;
+		};
+		806ED8412D938D2500C71D81 /* PreviewSnapshots */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 806ED8402D938D2500C71D81 /* XCRemoteSwiftPackageReference "swiftui-preview-snapshots" */;
+			productName = PreviewSnapshots;
+		};
+		806ED8432D938D2500C71D81 /* PreviewSnapshotsTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 806ED8402D938D2500C71D81 /* XCRemoteSwiftPackageReference "swiftui-preview-snapshots" */;
+			productName = PreviewSnapshotsTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

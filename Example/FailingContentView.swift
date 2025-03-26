@@ -2,6 +2,7 @@ import SwiftUI
 import UIKit
 import Foundation
 import HorizontalFlowLayout
+import PreviewSnapshots
 
 struct FailingContentView: View {
     struct TagModel: Identifiable {
@@ -22,11 +23,11 @@ struct FailingContentView: View {
         TagModel(text: "Very very very long tag", backgroundColor: .brown),
         TagModel(text: "UI", backgroundColor: .cyan),
         TagModel(text: "Design", backgroundColor: .mint),
-        TagModel(text: "A", backgroundColor: .gray)
+        TagModel(text: "ABC", backgroundColor: .gray)
     ]
     
     static let ticksPerSecond = CGFloat(60)
-    @State private var step = 100
+    @State private var step = 0
     var width: CGFloat {
         let period = CGFloat(10)
         let widthRange: Range<CGFloat> = 240..<300
@@ -36,15 +37,17 @@ struct FailingContentView: View {
         return averageWidth + (phase - 0.5) * rangeWidth / 2
     }
     
-    let timer = Timer.publish(every: 2 / ticksPerSecond, on: .main, in: .common).autoconnect()
+    init(step: Int = 0) {
+        _step = State(initialValue: step)
+        print(step)
+    }
+   // let timer = Timer.publish(every: 2 / ticksPerSecond, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
-            
             Spacer()
             
             HStack {
-                
                 HorizontalFlowLayout(
                     alignment: .leading,
                     horizontalSpacing: 8,
@@ -59,7 +62,7 @@ struct FailingContentView: View {
                                 .cornerRadius(8)
                         }
                     }
-                    .frame(minWidth: width)
+                    .frame(width: width)
                     .background(Rectangle().stroke(Color.accentColor))
                     .padding()
                 
@@ -67,7 +70,7 @@ struct FailingContentView: View {
                 
             }
             .background(Rectangle().stroke(Color.red))
-            .onReceive(timer) { _ in step += 1 }
+//            .onReceive(timer) { _ in step += 1 }
             .animation(.default, value: step)
             
             Spacer()
@@ -78,6 +81,18 @@ struct FailingContentView: View {
 
 struct FailingContentView_Previews: PreviewProvider {
     static var previews: some View {
-        FailingContentView()
+        snapshots.previews.previewLayout(.sizeThatFits)
+    }
+    
+    static var snapshots: PreviewSnapshots<Int> {
+        PreviewSnapshots(
+            configurations: [
+                .init(name: "Okay Layout", state: 0 ),
+                .init(name: "Broken Layout", state: 1000 ),
+            ],
+            configure: { state in
+                FailingContentView(step: state)
+            }
+        )
     }
 }

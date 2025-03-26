@@ -2,6 +2,7 @@ import SwiftUI
 import UIKit
 import Foundation
 import HorizontalFlowLayout
+import PreviewSnapshots
 
 extension String {
     /// Generates a random string of a given length using alphanumeric characters.
@@ -88,6 +89,16 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        snapshots.previews.previewLayout(.sizeThatFits)
+    }
+    static var snapshots: PreviewSnapshots<Int> {
+        PreviewSnapshots(
+            configurations: [
+                .init(name: "Okay Layout", state: 0 ),
+            ],
+            configure: { state in
+                FailingContentView(step: state)
+            }
+        )
     }
 }

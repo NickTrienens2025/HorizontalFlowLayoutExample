@@ -1,5 +1,6 @@
 import SwiftUI
 import HorizontalFlowLayout
+import PreviewSnapshots
 
 struct RemovableTagsView: View {
     @State private var tags: [TagItem] = [
@@ -110,7 +111,19 @@ struct RemovableTag: View {
     }
 }
 
-
-#Preview {
-    RemovableTagsView()
-} 
+struct RemovableTagsView_Previews: PreviewProvider {
+    static var previews: some View {
+        snapshots.previews.previewLayout(.sizeThatFits)
+    }
+    
+    static var snapshots: PreviewSnapshots<Int> {
+        PreviewSnapshots(
+            configurations: [
+                .init(name: "RemovableTagsView Layout", state: 0 ),
+            ],
+            configure: { state in
+                RemovableTagsView()
+            }
+        )
+    }
+}
