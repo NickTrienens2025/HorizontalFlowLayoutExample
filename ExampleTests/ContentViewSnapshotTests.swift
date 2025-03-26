@@ -19,7 +19,7 @@ final class FailingContentViewSnapshotTests: XCTestCase {
 
 final class ContentViewSnapshotTests: XCTestCase {
     func test_snapshots() {
-        ContentView_Previews.snapshots.assertSnapshots(as: .image(layout: .device(config: .iPhone13Pro)))
+        ContentView_Previews.snapshots.assertSnapshots(as: .image(layout: .device(config: .iPhone13Pro)), named: "framed")
     }
 }
 
@@ -27,7 +27,7 @@ final class TsgsViewSnapshotTests: XCTestCase {
     func test_snapshots() {
         RemovableTagsView_Previews.snapshots.assertSnapshots(as: .image(layout: .device(config: .iPhone13Pro)))
         
-        RemovableTagsView_Previews.snapshots.assertSnapshots(as: .image(layout: .device(config: .iPhone13Pro(.landscape)), traits: .iPhone13(.landscape)), named: "landscape")
+        RemovableTagsView_Previews.snapshots.assertSnapshots(as: .image(layout: .device(config: .iPhone13Pro(.landscape))), named: "landscape")
         
     }
 }

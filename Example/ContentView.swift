@@ -52,22 +52,22 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            
             Spacer()
             
             HStack {
-                
                 HorizontalFlowLayout(
                     alignment: .leading,
                     horizontalSpacing: 2,
                     verticalSpacing: 6) {
                         ForEach(tags) {
                             Text($0.text)
+                                .dynamicTypeSize(...DynamicTypeSize.accessibility5)
                                 .foregroundColor(Color.white)
                                 .padding(.horizontal, 4)
                                 .padding(.vertical, 4)
                                 .background($0.backgroundColor)
                                 .cornerRadius(8)
+                                
                         }
                     }
                     .frame(width: width)
@@ -87,17 +87,24 @@ struct ContentView: View {
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
-    static var snapshots: PreviewSnapshots<Int> {
-        PreviewSnapshots(
-            configurations: [
-                .init(name: "Okay Layout", state: 0 ),
-            ],
+    static var snapshots: PreviewSnapshots<PreviewState> {
+        let states = PreviewState.all(named: "Normal")
+            .map {  PreviewSnapshots.Configuration.init(name: "Layout\($0.name)", state: $0)  }
+        
+        print("DynamicTypeSize Count: \(DynamicTypeSize.allCases.count)")
+        print("States: \(states.count)")
+        
+        return PreviewSnapshots(
+            configurations: states,
             configure: { state in
-                FailingContentView(step: state)
+                ContentView()
+                    .environment(\.colorScheme, state.colorScheme)
+                    .environment(\.dynamicTypeSize, state.dynamicFontSize)
             }
         )
     }

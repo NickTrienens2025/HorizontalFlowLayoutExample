@@ -116,13 +116,14 @@ struct RemovableTagsView_Previews: PreviewProvider {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
     
-    static var snapshots: PreviewSnapshots<Int> {
+    static var snapshots: PreviewSnapshots<PreviewState> {
         PreviewSnapshots(
-            configurations: [
-                .init(name: "RemovableTagsView Layout", state: 0 ),
-            ],
+            configurations: PreviewState.all(named: "Normal")
+                .map {  PreviewSnapshots.Configuration.init(name: "Layout\($0.name)", state: $0)  },
             configure: { state in
                 RemovableTagsView()
+                    .environment(\.colorScheme, state.colorScheme)
+                    .environment(\.dynamicTypeSize, state.dynamicFontSize)
             }
         )
     }
