@@ -47,7 +47,7 @@ struct FailingContentView: View {
                 
                 HorizontalFlowLayout(
                     alignment: .leading,
-                    horizontalSpacing: 2,
+                    horizontalSpacing: 8,
                     verticalSpacing: 6) {
                         ForEach(tags) {
                             Text($0.text)
@@ -59,7 +59,7 @@ struct FailingContentView: View {
                                 .cornerRadius(8)
                         }
                     }
-                    .frame(width: width)
+                    .frame(minWidth: width)
                     .background(Rectangle().stroke(Color.accentColor))
                     .padding()
                 

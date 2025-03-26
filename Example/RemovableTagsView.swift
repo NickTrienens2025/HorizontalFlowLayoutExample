@@ -110,28 +110,6 @@ struct RemovableTag: View {
     }
 }
 
-// Extension to ContentView to add a tab view
-extension ContentView {
-    static func withTabs() -> some View {
-        TabView {
-            ContentView()
-                .tabItem {
-                    Label("Constriction", systemImage: "arrow.left.and.right")
-                }
-            
-            RemovableTagsView()
-                .tabItem {
-                    Label("Removable Tags", systemImage: "tag")
-                }
-            
-            ContentView()
-                .tabItem {
-                    Label("Too Tight", systemImage: "arrow.left.and.right")
-                }
-            
-        }
-    }
-}
 
 #Preview {
     RemovableTagsView()
