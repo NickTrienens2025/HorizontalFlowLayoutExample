@@ -1,0 +1,15 @@
+{
+  "originHash" : "ae484c35027d3d5b2dcabd64e89490f2579278e4012754da10f5aa696b0d1b4f",
+  "pins" : [
+    {
+      "identity" : "horizontalflowlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NickTrienens2025/HorizontalFlowLayout.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fb0e3053092e5c935fc5904799aa897c47bfadc6"
+      }
+    }
+  ],
+  "version" : 3
+}
