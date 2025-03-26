@@ -37,6 +37,8 @@ struct RemovableTagsView: View {
                             removeTag(tag)
                         }
                     )
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility5)
+
                 }
             }
             .padding()
@@ -51,6 +53,8 @@ struct RemovableTagsView: View {
                 .foregroundColor(.white)
                 .background(Color.blue)
                 .cornerRadius(8)
+                .dynamicTypeSize(...DynamicTypeSize.accessibility5)
+
             }
             
             Spacer()
@@ -95,14 +99,18 @@ struct RemovableTag: View {
     var body: some View {
         HStack(spacing: 4) {
             Text(text)
-                .font(.system(size: 14, weight: .medium))
+                .font(.body)
+                .dynamicTypeSize(...DynamicTypeSize.accessibility5)
             
             Button(action: onRemove) {
                 Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 14))
+                    .font(.caption)
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility5)
+
             }
             .foregroundColor(Color.white.opacity(0.8))
         }
+        .dynamicTypeSize(...DynamicTypeSize.accessibility5)
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
         .background(color)
